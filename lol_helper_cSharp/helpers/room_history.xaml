@@ -1,0 +1,13 @@
+﻿<Window x:Class="lol_helper_cSharp.helpers.room_history"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:lol_helper_cSharp.helpers"
+        mc:Ignorable="d" Width="300" Height="auto" AllowsTransparency="True" Background="Transparent"
+        ResizeMode="NoResize"
+        WindowStyle="None">
+	<StackPanel Orientation="Vertical" Name="container" Width="300" Height="Auto" >
+		<!-- 添加子布局 -->
+	</StackPanel>
+</Window>
