@@ -1,0 +1,131 @@
+﻿<Window x:Class="lol_helper_cSharp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:lol_helper_cSharp"
+        mc:Ignorable="d"
+        Title="LoL o.0助手" Height="350" Width="260"
+        ResizeMode="NoResize"
+		WindowStyle="None" AllowsTransparency="True" Background="Transparent"
+		MouseLeftButtonDown="Window_MouseDown">
+	<Grid>
+		<Grid.Background>
+			<SolidColorBrush Color="Transparent"/>
+		</Grid.Background>
+
+		<Grid.RowDefinitions>
+			<RowDefinition Height="auto"/>
+			<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
+
+		<Grid.Resources>
+			<Style	x:Key="LabelStyle" TargetType="Label">
+				<Setter	Property="FontSize" Value="12"/>
+			</Style>
+			<Style	x:Key="LabelStyle2" TargetType="Label">
+				<Setter	Property="FontSize" Value="10"/>
+			</Style>
+		</Grid.Resources>
+
+		<!-- 标题栏 -->
+		<Border Background="White" CornerRadius="10,10,0,0" VerticalAlignment="Top" PreviewMouseDown="TextBlock_MouseDown">
+			<Grid >
+				<TextBlock Text="LoL o.0助手" Foreground="Black" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5"/>
+				<Rectangle Fill="Gray" Height="2" VerticalAlignment="Bottom"/>
+			</Grid>
+		</Border>
+		<!-- 内容区域 -->
+		<Border CornerRadius="0,0,10,10" Background="White"  Margin="0,0,0,0" MinHeight="300" Grid.Row="1">
+			<!-- 在这里放置你的窗口内容 -->
+			<Grid x:Name="ProfileSkinWind">
+				<Grid>
+					<Grid.Background>
+						<SolidColorBrush Color="White" Opacity="0.5"/>
+					</Grid.Background>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="1*" />
+						<ColumnDefinition Width="1.5*" />
+					</Grid.ColumnDefinitions>
+					<Grid	Grid.Column="0" >
+						<StackPanel Orientation="Vertical"	HorizontalAlignment="Left" Background="LightGray" Opacity="0.75">
+							<!-- 左侧添加您的内容 -->
+							<CheckBox x:Name="auto_accept_switch" Content="自动接受对局" Margin="5" Checked="accept_checked" Unchecked="accept_unchecked"/>
+							<CheckBox x:Name="matchhist_switch"  Content="战绩助手" Margin="5" Checked="matchhist_checked" Unchecked="matchhist_unchecked"/>
+							<CheckBox x:Name="aram_helper_switch"  Content="大乱斗助手" Margin="5" Checked="aram_helper_checked" Unchecked="aram_helper_unchecked"/>
+							<CheckBox x:Name="match_helper_switch"  Content="匹配助手" Margin="5" Checked="match_helper_checked" Unchecked="match_helper_unchecked"/>
+						</StackPanel>
+						<StackPanel Orientation="Vertical" VerticalAlignment="Bottom" Margin="5,0,5,110">
+							<TextBox	x:Name="check_playername_matchhistory"	Text="查询召唤师战绩" KeyDown="check_player_matchhistory" />
+						</StackPanel>
+						<StackPanel Orientation="Vertical" VerticalAlignment="Bottom" Margin="5,0,5,50">
+							<Button	Content="保存游戏设置" Click="save_player_config"/>
+							<Button	Content="应用当前" Click="load_player_config"/>
+						</StackPanel>
+						<Button	Content="助手设置" VerticalAlignment="Bottom" Margin="5" Click="button1_Click"/>
+					</Grid>
+
+					<Grid	Grid.Column="1">
+						<StackPanel Orientation="Vertical"	HorizontalAlignment="Center"  Width="auto">
+							<!-- 左侧添加您的内容 -->
+							<Border BorderBrush="Black" Width="70" Height="70"  BorderThickness="1" CornerRadius="5">
+								<Image x:Name="current_player_icon" Width="70" Height="70" />
+							</Border>
+							<StackPanel Orientation="Horizontal"	HorizontalAlignment="Left" Margin="0,-5,0,0">
+								<Label	Content="召唤师:" Style="{StaticResource LabelStyle}"/>
+								<Label	Content="NA" x:Name="current_player_name" Style="{StaticResource LabelStyle}"  Width="100"/>
+							</StackPanel>
+							<StackPanel Orientation="Horizontal"	HorizontalAlignment="Left" Margin="0,-5,0,0">
+								<Label	Content="等级:" Style="{StaticResource LabelStyle}" />
+								<Label	Content="NA" x:Name="current_player_level" FontSize="14"  Width="100"/>
+							</StackPanel>
+
+							<Grid>
+								<Grid.RowDefinitions>
+									<RowDefinition	Height="auto"/>
+									<RowDefinition	Height="*"/>
+								</Grid.RowDefinitions>
+
+								<StackPanel Orientation="Vertical"	HorizontalAlignment="Left" Margin="5,0,0,0" Grid.Row="0">
+									<StackPanel Orientation="Horizontal"	HorizontalAlignment="Left" Margin="0,-5,-5,0">
+										<Label	Content="单双排:" Style="{StaticResource LabelStyle}" HorizontalAlignment="Left"/>
+										<Label	Content="NA" x:Name="current_player_solo5x5" Style="{StaticResource LabelStyle}" Width="100" />
+									</StackPanel>
+									<StackPanel Orientation="Horizontal"	HorizontalAlignment="Left" Margin="0,-5,-5,0">
+										<Label	Content="灵活:" Style="{StaticResource LabelStyle}" />
+										<Label	Content="NA" x:Name="current_player_fix5x5" Style="{StaticResource LabelStyle}"  Width="100"/>
+									</StackPanel>
+									<StackPanel Orientation="Horizontal"	HorizontalAlignment="Left" Margin="0,-5,-5,0">
+										<Label	Content="云顶:" Style="{StaticResource LabelStyle}" />
+										<Label	Content="NA" x:Name="current_player_tft" Style="{StaticResource LabelStyle}" Width="100"/>
+									</StackPanel>
+									<StackPanel Orientation="Horizontal"	HorizontalAlignment="Left" Margin="0,-5,-5,0">
+										<Label	Content="-狂暴:" Style="{StaticResource LabelStyle}" />
+										<Label	Content="NA" x:Name="current_player_tftturbo" Style="{StaticResource LabelStyle}"  Width="100"/>
+									</StackPanel>
+									<StackPanel Orientation="Horizontal"	HorizontalAlignment="Left" Margin="0,-5,-5,0">
+										<Label	Content="-双人:" Style="{StaticResource LabelStyle}" />
+										<Label	Content="NA" x:Name="current_player_tftdouble" Style="{StaticResource LabelStyle}"  Width="100"/>
+									</StackPanel>
+									<CheckBox Name="dynamic_skin_checkbox" Content="风险功能:动态换肤" Margin="0,5,0,0" IsEnabled="False" Checked="dynamic_changed_skin_select" Unchecked="dynamic_changed_skin_Unselect"/>
+									<ProgressBar Minimum="0" Maximum="100" x:Name="progressBar1" Margin="0,5,0,0" Height="10" Width="auto"/>
+									<TextBlock	Name="dynamic_log"	Text="检查游戏版本..." Margin="0,5,0,0"/>
+								</StackPanel>
+								<Grid VerticalAlignment="Bottom" Grid.Row="1" Margin="5,20,5,0" >
+									<StackPanel Orientation="Vertical"	HorizontalAlignment="Left" >
+										<Label Content="游戏状态:" Margin="-5"/>
+										<Label x:Name="game_status" Content="NA" Margin="-5"/>
+									</StackPanel>
+								</Grid>
+							</Grid>
+
+						</StackPanel>
+					</Grid>
+				</Grid>
+			</Grid>
+
+			
+		</Border>
+	</Grid>
+
+</Window>

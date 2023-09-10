@@ -1,0 +1,33 @@
+﻿<UserControl x:Class="lol_helper_cSharp.helpers.Room_History_Item"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:lol_helper_cSharp.helpers"
+             mc:Ignorable="d" 
+             d:DesignWidth="300" Background="White" MouseLeftButtonDown="UserControl_MouseLeftButtonDown">
+	<StackPanel Orientation="Vertical">
+		<Grid Margin="5">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition   Width="*"/>
+				<ColumnDefinition   Width="*"/>
+				<ColumnDefinition   Width="*"/>
+			</Grid.ColumnDefinitions>
+			<StackPanel	Orientation="Vertical"	Grid.Column="0">
+				<TextBlock	Name="player_name"	Text="NA" Foreground="Red" HorizontalAlignment="Center"/>
+				<TextBlock	Name="player_level"	Text="NA" HorizontalAlignment="Center"/>
+			</StackPanel>
+			<StackPanel	Orientation="Vertical"	Grid.Column="1">
+				<TextBlock	Text="本赛季:单双/灵活" Foreground="BlueViolet"/>
+				<TextBlock	Name="now_rank5x5"	Text="NA" Foreground="BlueViolet" Margin="20,0,0,0"/>
+				<TextBlock	Name="now_rankfix5x5"	Text="NA" Foreground="BlueViolet" Margin="20,0,0,0"/>
+			</StackPanel>
+			<StackPanel	Orientation="Vertical"	Grid.Column="2">
+				<TextBlock	Text="上赛季:单双/灵活"/>
+				<TextBlock	Name="last_rank5x5"	Text="NA" Margin="20,0,0,0"/>
+				<TextBlock	Name="last_rankfix5x5"	Text="NA" Margin="20,0,0,0"/>
+			</StackPanel>
+		</Grid>
+		<WrapPanel	Name="img_container" Height="45" />
+	</StackPanel>
+</UserControl>

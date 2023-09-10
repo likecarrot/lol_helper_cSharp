@@ -1,0 +1,51 @@
+﻿<Window x:Class="lol_helper_cSharp.helpers.select_lova"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:lol_helper_cSharp.helpers"
+        mc:Ignorable="d"
+		Height="260" Width="300"
+        ResizeMode="NoResize"
+		WindowStyle="None" AllowsTransparency="True" Background="Transparent"
+		MouseLeftButtonDown="Window_MouseDown">
+	<Grid>
+		<Grid.Background>
+			<SolidColorBrush Color="Transparent"/>
+		</Grid.Background>
+
+		<Grid.RowDefinitions>
+			<RowDefinition Height="auto"/>
+			<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
+
+		<!-- 标题栏 -->
+		<Border Background="White" CornerRadius="10,10,0,0" VerticalAlignment="Top" PreviewMouseDown="TextBlock_MouseDown">
+			<Grid >
+				<TextBlock Text="选择英雄优先级" Foreground="Black" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5"/>
+				<Rectangle Fill="Gray" Height="2" VerticalAlignment="Bottom"/>
+			</Grid>
+		</Border>
+		<!-- 内容区域 -->
+		<Border CornerRadius="0,0,10,10" Background="White"  Margin="0,0,0,0" Grid.Row="1">
+			<!-- 在这里放置你的窗口内容 -->
+			<StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" >
+				<StackPanel Orientation="Horizontal">
+					<Label Content="查找英雄: "/>
+					<TextBox Height="20" Width="100" Name="check_champ_input" TextChanged="check_champ_input_TextChanged"/>
+					<Button Content="查找" Margin="5,0,0,0" Width="50" Height="20" Click="Button_Click"/>
+				</StackPanel>
+				<StackPanel Orientation="Horizontal">
+					<Label	Content="英雄名:  " Foreground="Red"/>
+					<Label	Content="无" Name="display_champname"/>
+				</StackPanel>
+				<StackPanel	Orientation="Horizontal">
+					<Label Content="好感度(越高选择优先级越高,反之亦然): "/>
+					<TextBox x:Name="lova_score"	Width="25" Text="0" FontSize="14" VerticalAlignment="Center" Foreground="Red" PreviewMouseWheel="TextBox_PreviewMouseWheel"/>
+					<Button	Content="添加" Width="40" Margin="5,0,0,0" Height="20" Click="Button_Click_1"/>
+				</StackPanel>
+				<WrapPanel Orientation="Vertical" x:Name="add_list_log" />
+			</StackPanel>
+		</Border>
+	</Grid>
+</Window>
