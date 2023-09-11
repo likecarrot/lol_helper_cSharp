@@ -59,9 +59,8 @@ namespace lol_helper_cSharp
                 await apiManager.GetAndProcessCommandLine();
                 if (apiManager.Status == true)
                 {
-                    await Task.Delay(10000); // 等待5秒
+                    await Task.Delay(1000); // 等待5秒
                     var res = await apiManager.GetClientStatus();
-
                     try
                     {
                         var gameversion = await apiManager.GetGameVersion1();
